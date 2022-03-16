@@ -1,0 +1,640 @@
+namespace ConsoleApp1
+{
+    class Sample
+    {
+        int no1, no2;
+
+        public void getnumbers(int no1,int no2)
+        {
+            this.no1 = no1; 
+            this.no2 = no2;
+        }
+
+        public int addnumbers()
+        {
+            return (this.no1+this.no2);
+        }
+
+        public int subnumbers()
+        {
+            return (this.no1 - this.no2);
+        }
+
+        public int checkgreater() //?: ternary operator
+        {
+            //if (no1 > no2)
+            //    return no1;
+            //else
+            //    return no2;
+
+            return no1 > no2 ? no1 : no2;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            obj.getnumbers(10, 20);
+            int result=obj.addnumbers();
+            Console.WriteLine("sum=" + result);
+
+            Console.WriteLine("Diff=" + obj.subnumbers());
+
+            Console.WriteLine("greatest number is=" + obj.checkgreater());
+        }
+    }
+}
+
+
+
+
+constructor and Destructor:
+
+constructor :
+->It is special member of class,which intialises the data-members.
+->constructor name is same as class name.
+->constructor should be public.
+->constructor can parameterised.
+
+3 types
+1.Default
+2.Parameterised
+3.copy
+
+namespace ConsoleApp1
+{
+    class Book
+    {
+        int bid;
+        string bname;
+        double price;
+
+        public Book() 
+        {
+            bid = 1;
+            bname = "C#_PRO";
+            price = 5600;
+        } //default const
+
+        public Book(int bid,string bname,double price) //param
+        {
+            this.bid = bid;
+            this.bname = bname;
+            this.price = price;
+        }
+
+        public Book(Book obj) //copy
+        {
+            this.bid = obj.bid;
+            this.bname = obj.bname;
+            this.price = obj.price;
+        }
+
+        public void show()
+        {
+            Console.WriteLine($"bookid={bid},BookName={bname},Price={price}");
+        }
+       ~Book()
+        {
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book obj1 = new Book();
+            obj1.show();
+            
+            Book obj2 = new Book(2,"SQL",3400);
+            obj2.show();
+
+            Book obj3 = new Book(obj1);
+            obj3.show();
+        }
+    }
+
+
+Destructor:
+->It is member of class.
+->Destructor deallocates the memory space used by objects.
+->Destructor  name is same class name.preceded by ~ operator
+
+WAP to store product Details in class.
+1.pname,unitprice,noofitems
+2.with all the 3 types of constructor.
+3.compute the total_price of all the products.(unitprice*noofitems=price)
+
+Inheritance:
+->It is method of deriving features of an old class(base) into a new class(derived).
+->code-reusability.
+
+Single Inheritance.
+namespace ConsoleApp1
+{
+    class Data
+    {
+        protected int coord1, coord2;
+
+        public void getdata()
+        {
+            Console.WriteLine("enter 2 co-ordinates");
+            coord1 = Convert.ToInt32( Console.ReadLine());
+            coord2 = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+
+    class Data1 : Data
+    {
+        public void compute()
+        {
+            double res = Math.Sqrt(coord1 * coord2);
+            Console.WriteLine("Result=" + res);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Data1 obj = new Data1();
+            obj.getdata();
+            obj.compute();
+        }
+    }
+
+Multi-level Inheritance.
+
+namespace ConsoleApp1
+{
+    class employee
+    {
+        protected int empid;
+        protected string empname;
+
+        public void getdata()
+        {
+            Console.WriteLine("enter employee Details:id,name");
+            empid = Convert.ToInt32( Console.ReadLine());
+            empname = Console.ReadLine();
+        }
+    }
+
+    class Dept : employee
+    {
+        protected string deptname;
+        protected string deptloc;
+
+        public void getdeptdata()
+        {
+            Console.WriteLine("enter Dept Details:name,loc");
+            deptname = (Console.ReadLine());
+            deptloc = Console.ReadLine();
+        }
+    }
+
+    class Final : Dept
+    {
+        public void display()
+        {
+            Console.WriteLine("EmpId="+empid+","+"Empname="+empname);
+            Console.WriteLine("Deptname=" + deptname + "," + "DeptLoc=" + deptloc);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Final obj = new Final();
+            obj.getdata();
+            obj.getdeptdata();
+            obj.display();
+        }
+    }
+}
+
+Heirarchial Inheritance.
+
+namespace ConsoleApp1
+{
+    class data
+    {
+        protected int a, b;
+
+        public void getdata()
+        {
+            Console.WriteLine("enter 2 nos");
+            a = Convert.ToInt32( Console.ReadLine());
+            b = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+
+    class Demo1 : data
+    {
+        public void add()
+        {
+            Console.WriteLine("Sum of  2nos="+(a+b));
+        }
+    }
+
+    class Demo2 : data
+    {
+        public void sub()
+        {
+            Console.WriteLine("Diff of  2nos=" + (a - b));
+        }
+    }
+    class Demo3 : data
+    {
+        public void Pro()
+        {
+            Console.WriteLine("Product of  2nos=" + (a * b));
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo1 obj1 = new Demo1();
+            obj1.getdata();
+            obj1.add();
+
+            Demo2 obj2 = new Demo2();
+            obj2.getdata();
+            obj2.sub();
+
+            Demo3 obj3 = new Demo3();
+            obj3.getdata();
+            obj3.Pro();
+        }
+    }
+}
+
+
+constructors in derived class:
+constructor inheritance.
+
+namespace ConsoleApp1
+{
+    class category:Object
+    {
+       protected string cname, cdesc;
+
+        public category(string cname,string cdesc)
+        {
+            this.cname = cname;
+            this.cdesc = cdesc;
+        }
+    }
+
+    class Product:category
+    {
+        string pname;
+        double price;
+
+        public Product(string cname, string cdesc,string pname, double price):base(cname,cdesc)
+        {
+            this.pname = pname;
+            this.price = price;
+        }
+
+        public void displaydet()
+        {
+            Console.WriteLine("category_name:"+cname+","+"Cdesc="+cdesc);
+            Console.WriteLine("Product_name:" + pname + "," + "Price=" + price);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Product p1 = new Product("stationary", "All engg and Medical books", "C#_PRO", 6800);
+            p1.displaydet();
+        }
+    }
+} 
+
+ 2 types:
+concrete methods->method with definition
+abstract methods->method without definition
+
+Interface:
+->collection of abstract methods.
+->variable are not allowed to declare.
+->methods of interface are public by default.
+->All methods of interface should be implemented in class.
+
+
+namespace ConsoleApp1
+{
+    interface InterfaceOne
+    {
+        void display();
+        void print(string str);
+    }
+
+    class Demo : InterfaceOne
+    {
+        public void display()
+        {
+            Console.WriteLine("this is interface method");
+        }
+
+        public void print(string str)
+        {
+            Console.WriteLine(string.Concat("hello=", str));
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //InterfaceOne obj = new InterfaceOne();
+            Demo obj = new Demo();
+            obj.display();
+            obj.print("WORLD");
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    interface InterfaceOne
+    {
+        void method1(int a,int b);
+        double method2(int a);
+        void method3(string a, string b,string c);
+    }
+
+    class Demo : InterfaceOne
+    {
+        public void method1(int a, int b)
+        {
+            Console.WriteLine("Product=" + (a * b));
+        }
+
+        public double method2(int a)
+        {
+            return (Math.Sqrt( a * a));
+        }
+
+        public void method3(string a, string b, string c)
+        {
+            Console.WriteLine(string.Concat(a,b,c));
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //InterfaceOne obj = new InterfaceOne();
+            Demo obj = new Demo();
+            obj.method1(10,30);
+            Console.WriteLine("Result="+ obj.method2(25));
+            obj.method3("C#", "_PROGRAMMING", " IS INTRESTING");
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    interface InterfaceOne
+    {
+        void method1(int a,int b);
+        double method2(int a);
+        void method3(string a, string b,string c);
+    }
+
+    interface InterfaceTwo
+    {
+        int calculate(int a, int b);
+        double compute(int r);
+    }
+
+    class Demo : InterfaceOne,InterfaceTwo
+    {
+        public int calculate(int a, int b)
+        {
+            return (a+b);
+        }
+
+        public double compute(int r)
+        {
+            return (3.14*r*r);
+        }
+
+        public void method1(int a, int b)
+        {
+            Console.WriteLine("Product=" + (a * b));
+        }
+
+        public double method2(int a)
+        {
+            return (Math.Sqrt( a * a));
+        }
+
+        public void method3(string a, string b, string c)
+        {
+            Console.WriteLine(string.Concat(a,b,c));
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //InterfaceOne obj = new InterfaceOne();
+            Demo obj = new Demo();
+            obj.method1(10,30);
+            Console.WriteLine("Result="+ obj.method2(25));
+            obj.method3("C#", "_PROGRAMMING", " IS INTRESTING");
+            Console.WriteLine("Sum="+ obj.calculate(10, 20));
+            Console.WriteLine("Area of circle=" + obj.compute(25));
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    interface InterfaceOne
+    {
+        void display();
+    }
+
+    interface InterfaceTwo
+    {
+        void display();
+    }
+
+    class Demo : InterfaceOne, InterfaceTwo
+    {
+         void InterfaceOne.display()
+        {
+            Console.WriteLine("method from interface one");
+        }
+
+         void InterfaceTwo.display()
+        {
+            Console.WriteLine("method from interface two");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+            ((InterfaceOne)obj).display();
+            ((InterfaceTwo)obj).display();
+        }
+    }
+}
+
+
+static:
+
+static method and non-static method.
+static variable and non-static variable.
+static constructor and non-static constructor.(base and derived)
+static class
+
+namespace ConsoleApp1
+{
+    class Demo 
+    {
+        public void print()
+        {
+            Console.WriteLine("It is non-static method");
+        }
+
+        public static void display()
+        {
+            Console.WriteLine("It is static method");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj1 = new Demo();
+            obj1.print();
+
+            Demo obj2 = new Demo();
+            obj2.print();
+
+            Demo.display();
+        }
+    }
+}
+
+
+
+namespace ConsoleApp1
+{
+    class Demo 
+    {
+        int radius;
+
+        static double pi;
+        
+        public Demo(int radius)
+        {
+            this.radius = radius;
+        }
+
+        static Demo()
+        {
+            Demo.pi = Math.PI;
+        }
+
+        public void print()
+        {
+            //Console.WriteLine("Area of circle="+Demo.pi*this.radius*this.radius);
+            Console.WriteLine("Area of circle=" + pi * radius * radius);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj1 = new Demo(10);
+            obj1.print();
+
+            Demo obj2 = new Demo(20);
+            obj2.print();
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    class Demo 
+    {
+        public Demo()
+        {
+            Console.WriteLine("non-static");
+        }
+
+        static Demo()
+        {
+            Console.WriteLine("static");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj1 = new Demo();
+
+            Demo obj2 = new Demo();
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    class Demo 
+    {
+        public Demo()
+        {
+            Console.WriteLine("A");
+        }
+
+        static Demo()
+        {
+            Console.WriteLine("B");
+        }
+    }
+    class Demo1 : Demo
+    {
+        public  Demo1():base()
+        {
+            Console.WriteLine("C");
+        }
+
+        static Demo1()
+        {
+            Console.WriteLine("D");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo1 obj1 = new Demo1();  //D B A C
+
+            
+        }
+    }
+}
+
+
+

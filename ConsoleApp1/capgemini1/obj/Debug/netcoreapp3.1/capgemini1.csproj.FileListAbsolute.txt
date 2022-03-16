@@ -1,0 +1,9 @@
+E:\Yamiee\ConsoleApp1\capgemini1\bin\Debug\netcoreapp3.1\capgemini1.deps.json
+E:\Yamiee\ConsoleApp1\capgemini1\bin\Debug\netcoreapp3.1\capgemini1.dll
+E:\Yamiee\ConsoleApp1\capgemini1\bin\Debug\netcoreapp3.1\capgemini1.pdb
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\capgemini1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\capgemini1.AssemblyInfoInputs.cache
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\capgemini1.AssemblyInfo.cs
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\capgemini1.csproj.CoreCompileInputs.cache
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\capgemini1.dll
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\capgemini1.pdb

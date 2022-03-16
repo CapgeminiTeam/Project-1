@@ -1,0 +1,10 @@
+E:\Yamiee\ConsoleApp1\capgemini1\bin\Debug\netcoreapp3.1\MyLibraryCore.deps.json
+E:\Yamiee\ConsoleApp1\capgemini1\bin\Debug\netcoreapp3.1\MyLibraryCore.dll
+E:\Yamiee\ConsoleApp1\capgemini1\bin\Debug\netcoreapp3.1\MyLibraryCore.pdb
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\MyLibraryCore.GeneratedMSBuildEditorConfig.editorconfig
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\MyLibraryCore.AssemblyInfoInputs.cache
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\MyLibraryCore.AssemblyInfo.cs
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\MyLibraryCore.csproj.CoreCompileInputs.cache
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\MyLibraryCore.dll
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\MyLibraryCore.pdb
+E:\Yamiee\ConsoleApp1\capgemini1\obj\Debug\netcoreapp3.1\MyLibraryCore.csproj.AssemblyReference.cache

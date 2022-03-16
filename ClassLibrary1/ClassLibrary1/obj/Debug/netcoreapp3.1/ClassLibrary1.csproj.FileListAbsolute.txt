@@ -1,0 +1,10 @@
+E:\Yamiee\ClassLibrary1\ClassLibrary1\bin\Debug\netcoreapp3.1\ClassLibrary1.deps.json
+E:\Yamiee\ClassLibrary1\ClassLibrary1\bin\Debug\netcoreapp3.1\ClassLibrary1.dll
+E:\Yamiee\ClassLibrary1\ClassLibrary1\bin\Debug\netcoreapp3.1\ClassLibrary1.pdb
+E:\Yamiee\ClassLibrary1\ClassLibrary1\obj\Debug\netcoreapp3.1\ClassLibrary1.csproj.AssemblyReference.cache
+E:\Yamiee\ClassLibrary1\ClassLibrary1\obj\Debug\netcoreapp3.1\ClassLibrary1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Yamiee\ClassLibrary1\ClassLibrary1\obj\Debug\netcoreapp3.1\ClassLibrary1.AssemblyInfoInputs.cache
+E:\Yamiee\ClassLibrary1\ClassLibrary1\obj\Debug\netcoreapp3.1\ClassLibrary1.AssemblyInfo.cs
+E:\Yamiee\ClassLibrary1\ClassLibrary1\obj\Debug\netcoreapp3.1\ClassLibrary1.csproj.CoreCompileInputs.cache
+E:\Yamiee\ClassLibrary1\ClassLibrary1\obj\Debug\netcoreapp3.1\ClassLibrary1.dll
+E:\Yamiee\ClassLibrary1\ClassLibrary1\obj\Debug\netcoreapp3.1\ClassLibrary1.pdb

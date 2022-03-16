@@ -1,0 +1,625 @@
+Method Hiding:
+method provides an option for re-implementing the method with "new" keyword.
+
+namespace ConsoleApp1
+{
+        class Deptdet
+        {
+            public void display()
+            {
+             Console.WriteLine("total no of Depts=3");
+            }
+        }
+        class CompInfo : Deptdet
+        {
+            public new void display()
+            {
+                 base.display();
+            Console.WriteLine("--------------------");
+            Console.WriteLine("Dept Name=HR,NO OF EMP=10");
+                Console.WriteLine("Dept Name=accounts,NO OF EMP=50");
+                Console.WriteLine("Dept Name=SALES,NO OF EMP=500");
+            }
+        }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            CompInfo obj = new CompInfo();
+            obj.display();
+        }
+    }
+} 
+
+
+class Library:(.dll)
+
+.dll                         .exe
+
+dynamic link library          executable file
+
+
+class class1                   void main()
+{                              { refer lib  }
+//mtds
+}
+
+Dependent file.              independent file.
+
+
+using System;
+
+namespace MyLib1
+{
+    public class Class1
+    {
+        public void method1(int a,int b)
+        {
+            Console.WriteLine("Sum=" + (a + b));
+        }
+
+        public double method2(int r)
+        {
+            return (3.14 * r * r);
+        }
+
+        public double method3(int r)
+        {
+            return (2*3.14 * r);
+        }
+    }
+}
+
+
+using MyLib1;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            MyLib1.Class1 obj = new Class1();
+            obj.method1(10, 20);
+            Console.WriteLine("Area="+  obj.method2(10));
+            Console.WriteLine("Circumference=" + obj.method3(10));
+        }
+    }
+}
+
+Internal and protected internal:
+
+default acess specifier of class in internal.
+internal->variables declared in class is visible within the namespace/consoleapp/assembly
+protected internal->variable is visible within the namespace/consoleapp/assembly and outside(inherited)
+the assembly.
+
+namespace ConsoleApp1
+{
+    public class Dept //internal
+    {
+       internal string dname="HR_DEPT"; //private
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dept obj = new Dept();
+            Console.WriteLine(obj.dname);
+        }
+    }
+}
+
+using ConsoleApp1;
+
+namespace ConsoleApp2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dept obj = new Dept();
+            Console.WriteLine(obj.dname);
+        }
+    }
+}
+
+Protected Internal:
+
+namespace ConsoleApp1
+{
+    public class Dept //internal
+    {
+       protected internal string dname="HR_DEPT"; //private
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dept obj = new Dept();
+            Console.WriteLine(obj.dname);
+        }
+    }
+}
+
+namespace ConsoleApp2
+{
+    class Program:Dept
+    {
+        static void Main(string[] args)
+        {
+            Program obj = new Program();
+            Console.WriteLine(obj.dname);
+        }
+    }
+}
+
+
+Delegates:
+
+-->function pointer.
+-->A delegate can call n'number of functions provided delegate signature and function
+signatures are matching.
+
+
+namespace ConsoleApp1
+{
+    delegate void MyDelegate();
+
+    class Demo
+    {
+        public void method1()
+        {
+            Console.WriteLine("hello");
+        }
+
+        public void method2()
+        {
+            Console.WriteLine("c# programming");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+
+            MyDelegate del1 = new MyDelegate(obj.method1);
+
+            del1();
+
+            MyDelegate del2 = new MyDelegate(obj.method2);
+
+            del2();
+        }
+    }
+}
+
+
+namespace ConsoleApp1
+{
+    delegate void MyDelegate(string s1,string s2);
+
+    class Demo
+    {
+        public void method1(string s1,string s2)
+        {
+            Console.WriteLine(s1+s2);
+        }
+
+        public void method2(string s1,string s2)
+        {
+            Console.WriteLine(string.Concat(s1,s2));
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+
+            MyDelegate del1 = new MyDelegate(obj.method1);
+
+            del1("C#", ".NET");
+
+            MyDelegate del2 = new MyDelegate(obj.method2);
+
+            del2(".NET","-FULLSTACK");
+        }
+    }
+}
+
+Multicast-Delegate:
+
+namespace ConsoleApp1
+{
+    delegate void MyDelegate(int a,int b);
+
+    class Demo
+    {
+        public void method1(int a,int b)
+        {
+            Console.WriteLine("Sum="+(a+b));
+        }
+
+        public void method2(int a, int b)
+        {
+            Console.WriteLine("Diff=" + (a - b));
+        }
+
+        public void method3(int a, int b)
+        {
+            Console.WriteLine("Product=" + (a * b));
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+
+            MyDelegate del1 = new MyDelegate(obj.method1);
+            del1(10,20);
+
+            MyDelegate del2 = new MyDelegate(obj.method2);
+            del2(30,10);
+
+            MyDelegate del3 = new MyDelegate(obj.method3);
+            del3(30, 45);
+            Console.WriteLine("-----Multicast Delegate------");
+            MyDelegate del4 = del1 + del2 + del3; //Multicast Delegate
+            del4(50, 25);
+
+            MyDelegate del5 = del1 + del2 - del3; //Multicast Delegate
+            del5.Invoke(20, 25);
+        }
+    }
+}
+
+
+Events:
+
+event--->delegate--->method.
+
+1.events are created using event keyword
+2.event cannot return value,it is always void.
+3.event is associated with delegate(event handler).
+
+namespace ConsoleApp1
+{
+    class Demo
+    {
+        public delegate void DG_NUMBERS();
+        public event DG_NUMBERS ev_oddno; 
+        public event DG_NUMBERS ev_evenno;
+
+        public void Add()
+        {
+            int a, b;
+            Console.WriteLine("enter  2nos");
+            a = int.Parse(Console.ReadLine());
+            b = int.Parse(Console.ReadLine());
+            int res = a + b;
+            if (res % 2 != 0)
+                ev_oddno();
+            else
+                ev_evenno();
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // this.button2.Click += new System.EventHandler(this.button2_Click);
+            Demo obj = new Demo();
+            obj.ev_oddno += new Demo.DG_NUMBERS(msg1); //adding event handler
+            obj.ev_evenno += new Demo.DG_NUMBERS(msg2);
+            obj.Add();
+            static void msg1()
+            {
+                Console.WriteLine("odd no");
+            }
+
+            static void msg2()
+            {
+                Console.WriteLine("even no");
+            }
+        }
+    }
+}
+
+File Handling:
+
+using system.IO;
+
+input--->create,write
+output-->open,read,append
+
+FILE
+Fileinfo
+FileStream
+streamwriter and streamreader
+Binarywriter and Binaryreader
+
+ static void Main(string[] args)
+        {
+            File.WriteAllText(@"D:\Myfile1.txt", "this is file handling using io namespace");
+            //verbatim @
+        }
+
+ string str= File.ReadAllText("D:\\Myfile1.txt");
+            Console.WriteLine(str);
+
+
+Binarywriter and Binaryreader:
+
+ static void Main(string[] args)
+        {
+            BinaryWriter bw = new BinaryWriter(File.Open("D:\\File1.dat", FileMode.Create));
+            bw.Write(10);
+            bw.Write("hello");
+            bw.Write(123.23);
+            bw.Close();
+
+           BinaryReader br = new BinaryReader(File.Open("D:\\File1.dat", FileMode.Open));
+            Console.WriteLine(br.ReadInt32());
+            Console.WriteLine(br.ReadString());
+            Console.WriteLine(br.ReadDouble());
+            br.Close();
+        }
+
+FileStream:(bytes)
+
+ byte[] b1 = new byte[] {10,20,30,40,50,60,70 };
+            FileStream fs = new FileStream("d:\\Demo1.txt", FileMode.Create);
+            fs.Write(b1, 0, b1.Length);
+            fs.Close();
+
+ FileStream fs = new FileStream("d:\\Demo1.txt", FileMode.Open);
+            fs.Seek(0, SeekOrigin.Begin);
+            for (int i = 0; i < fs.Length; i++)
+            {
+                Console.WriteLine(fs.ReadByte());
+            }
+            fs.Close();
+
+streamwriter and streamreader:
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            //FileStream fs = new FileStream("d:\\Demo2.txt", FileMode.Create);
+            //StreamWriter sw = new StreamWriter(fs);
+            //sw.Write("welcome to file handling in c#");
+            //sw.Close();
+            //fs.Close();
+
+            //FileStream fs = new FileStream("d:\\Demo2.txt", FileMode.Open);
+            //StreamReader sr = new StreamReader(fs);
+            //Console.WriteLine(sr.ReadLine());
+            //sr.Close();
+            //fs.Close();
+
+            FileStream fs = new FileStream("d:\\Demo2.txt", FileMode.Append);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write("File handling using streamwriter and stramreader class");
+            sw.Close();
+            fs.Close();
+        }
+    }
+
+  if (File.Exists("d:\\Demo20.txt"))
+            {
+                FileStream fs = new FileStream("d:\\Demo20.txt", FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                Console.WriteLine(sr.ReadLine());
+                sr.Close();
+                fs.Close();
+            }
+            else
+                Console.WriteLine("file does not exists");
+
+
+
+static void Main(string[] args)
+        {
+            FileInfo obj = new FileInfo("D:\\abc.txt");
+            StreamWriter sw = obj.CreateText();
+            sw.WriteLine("file data with fileinfo class");
+            sw.Close();
+
+            FileInfo obj = new FileInfo("D:\\abc.txt");
+            StreamReader sr = obj.OpenText();
+            string s = "";
+            // Console.WriteLine(sr.ReadLine());
+            while ((s = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(s);
+            }
+            sr.Close();
+
+            FileInfo obj = new FileInfo("D:\\abc.txt");
+            StreamWriter sw = obj.AppendText();
+            sw.WriteLine("this is new content added to file");
+            sw.Close();
+
+            FileInfo obj = new FileInfo("D:\\abc.txt");
+            obj.Delete();
+        }
+    }
+
+
+copyTo and MoveTo
+
+
+static void Main(string[] args)
+        {
+            FileInfo obj = new FileInfo("D:\\abc.txt");
+            obj.CopyTo("d:\\abc1.txt");
+
+            FileInfo obj = new FileInfo("D:\\Myfile1.txt");
+            obj.MoveTo("E:\\DemoFile.txt");
+
+
+            Console.WriteLine(obj.Exists);
+            Console.WriteLine(obj.Name);
+            Console.WriteLine(obj.FullName);
+            Console.WriteLine(obj.Length);
+            Console.WriteLine(obj.DirectoryName);
+            Console.WriteLine(obj.LastAccessTime);
+            Console.WriteLine(obj.Extension);
+            Console.WriteLine(obj.CreationTime);
+
+        }
+
+
+static void Main(string[] args)
+        {
+            DirectoryInfo di = new DirectoryInfo("D:\\MyfolderOne");
+            di.Create();
+
+
+            DirectoryInfo di = new DirectoryInfo("D:\\MyfolderOne");
+            di.CreateSubdirectory("SubFolder1");
+            di.CreateSubdirectory("SubFolder2");
+
+
+            DirectoryInfo di = new DirectoryInfo("D:\\MyfolderOne");
+            DirectoryInfo[] dir1 = di.GetDirectories();
+
+            foreach(DirectoryInfo i in dir1)
+            {
+                Console.WriteLine(i + "," + i.GetFiles().Length);
+            }
+        }
+
+moveto 
+
+static void Main(string[] args)
+        {
+            DirectoryInfo di = new DirectoryInfo("D:\\MyfolderOne");
+            di.MoveTo("D:\\Myfolder_NEW");
+        }
+
+Serialization:It is a method of converting object into "byte stream".
+so it can be stored memory,DB,FILE.
+It is method to persist the state of an object inorder to recreate the same object
+when required.
+De-Serialization-->It is reverse process of Serialization.
+
+
+
+types:
+Binary,Soap-->Deep Serialization(private/pro/public)
+
+
+Soap-->simple object access protocol.soap-protocol
+soapenvelope(data-delivery info)
+soapbody->info
+
+
+Xml-->shallow Serialization(public)
+
+
+Json->Serialization
+
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+namespace ConsoleApp1
+{   
+    [Serializable]
+    class student
+    {
+        public int Regno;
+        public string sname;
+        public double permarks;
+
+        public student()
+        {
+            Regno = 1;
+            sname = "Mary";
+            permarks = 70.88;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //FileStream fs = new FileStream("D:\\MyFile1.txt", FileMode.Create);
+            //student stobj = new student();
+            //BinaryFormatter fm = new BinaryFormatter();
+            //fm.Serialize(fs, stobj);
+            //fs.Close();
+
+            FileStream fs = new FileStream("D:\\MyFile1.txt", FileMode.Open);
+            student stobj = new student();
+            BinaryFormatter fm = new BinaryFormatter();
+            stobj = (student)fm.Deserialize(fs);
+            Console.WriteLine(stobj.Regno + "," + stobj.sname + "," + stobj.permarks);
+            fs.Close();
+
+        }
+    }
+}
+
+Xml->[html,dhtml,xaml,xhtml]
+extensible markup language.
+-->xml is one of the text-based std for data representation/transfer.
+
+<student>
+<Regno>1</Regno>
+<sname>Mary</sname>
+<permarks>70.88</permarks>
+</student>
+
+using System.IO;
+using System.Xml.Serialization;
+
+namespace ConsoleApp1
+{   
+    [Serializable]
+   public class student
+    {
+        public  int Regno;
+        public string sname;
+        public double permarks;
+
+        public student()
+        {
+            Regno = 1;
+            sname = "Mary";
+            permarks = 70.88;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //FileStream fs = new FileStream("D:\\MyFile2.xml", FileMode.Create);
+            //student stobj = new student();
+            //XmlSerializer fm = new XmlSerializer(typeof(student));
+            //fm.Serialize(fs, stobj);
+            //fs.Close();
+
+            FileStream fs = new FileStream("D:\\MyFile2.xml", FileMode.Open);
+            XmlSerializer fm = new XmlSerializer(typeof(student));
+            student stobj = (student)fm.Deserialize(fs);
+            Console.WriteLine(stobj.Regno + "," + stobj.sname + "," + stobj.permarks);
+            fs.Close();
+
+        }
+    }
+}
+
+
+
+
+
+
+

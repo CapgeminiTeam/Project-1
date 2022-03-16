@@ -1,0 +1,14 @@
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.csproj.AssemblyReference.cache
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.GeneratedMSBuildEditorConfig.editorconfig
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.AssemblyInfoInputs.cache
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.AssemblyInfo.cs
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.csproj.CoreCompileInputs.cache
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\bin\Release\netcoreapp3.1\Console practise day1.exe
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\bin\Release\netcoreapp3.1\Console practise day1.deps.json
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\bin\Release\netcoreapp3.1\Console practise day1.runtimeconfig.json
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\bin\Release\netcoreapp3.1\Console practise day1.runtimeconfig.dev.json
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\bin\Release\netcoreapp3.1\Console practise day1.dll
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\bin\Release\netcoreapp3.1\Console practise day1.pdb
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.dll
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.pdb
+E:\Yamiee\Capgemini Dot net\Console practise day1\Console practise day1\obj\Release\netcoreapp3.1\Console practise day1.genruntimeconfig.cache

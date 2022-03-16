@@ -1,0 +1,946 @@
+static class:
+
+static class cannot be instantiated.
+static class contains only static variables and methods.
+
+namespace ConsoleApp1
+{
+    static class Demo 
+    {
+        static int id;
+        static string name;
+
+        static Demo()
+        {
+            id = 1;
+            name = "Sam";
+        }
+
+        public static void display()
+        {
+            Console.WriteLine(id + "," + name);
+        }
+    }
+   
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Demo obj1 = new Demo(); 
+            Demo.display();
+        }
+    }
+}
+
+
+Polymorphism:
+
+Poly->multiple
+morphism->forms/behaviours
+
+ 2 types:
+1.Compile-time/early binding/static polymorphism/function overloading
+
+2.runtime/late binding/dynamic polymorphism/function overriding
+
+base(mtd)--->derived(mtd)
+
+namespace ConsoleApp1
+{
+    class Demo 
+    {
+        public void display()
+        {
+            Console.WriteLine("HELLO WORLD");
+        }
+        public void display(string s1)
+        {
+            Console.WriteLine("HELLO="+s1);
+        }
+        public string display(string s1,string s2)
+        {
+            return string.Concat(s1,s2);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj1 = new Demo();
+            obj1.display();
+            obj1.display("jay");
+           Console.WriteLine(obj1.display("NEW", "YORK"));
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    class Demo1
+    {
+        public virtual void print()
+        {
+            Console.WriteLine("base class");
+        }
+    }
+    class Demo2:Demo1
+    {
+        public override void print()
+        {
+            Console.WriteLine("derived class");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo2 obj1 = new Demo2();
+            obj1.print();
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    class vehicle
+    {
+        protected  string vname;
+        protected double price;
+
+        public vehicle(string vname,double price)
+        {
+            this.vname = vname;
+            this.price = price;
+        }
+
+        public virtual void print() { }
+    }
+    class TWOWH:vehicle
+    {
+        string desc;
+
+        public TWOWH(string vname,double price,string desc):base(vname,price)
+        {
+            this.desc = desc;
+        }
+        public override void print()
+        {
+            Console.WriteLine("two wheeler Details");
+            Console.WriteLine(vname+","+price+desc);
+        }
+    }
+
+    class FOURWH : vehicle
+    {
+        string desc;
+
+        public FOURWH(string vname, double price, string desc) : base(vname, price)
+        {
+            this.desc = desc;
+        }
+        public override void print()
+        {
+            Console.WriteLine("FOUR wheeler Details");
+            Console.WriteLine(vname + "," + price +","+ desc);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            TWOWH obj1 = new TWOWH("HONDA ACTIVA", 55000, "SILVER");
+            obj1.print();
+            FOURWH obj2 = new FOURWH("INNOVA CRYSTA", 2700000, "WHITE");
+            obj2.print();
+        }
+    }
+}
+
+
+Abstract class
+Sealed class
+Partial class (partial methods)
+static class
+
+
+Abstract class:
+1.collection of abstract and non-abstract methods.
+2.variables are allowed to declare.
+3.Abstract class cannot be instantiated but can be inherited.
+
+namespace ConsoleApp1
+{
+    abstract class Sample
+    {
+        protected double d1, d2;
+
+        public  void print() 
+        {
+            Console.WriteLine("enter 2 dimension");
+            d1 = double.Parse(Console.ReadLine());
+            d2 = double.Parse(Console.ReadLine());
+        }
+
+        public abstract double calculate();
+    }
+
+    class Sample1 : Sample
+    {
+        public override double calculate()
+        {
+            return (0.5*d1*d2);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Sample obj = new Sample();
+            Sample1 obj = new Sample1();
+            obj.print();
+
+            Console.WriteLine("Area of triangle="+ obj.calculate());
+        }
+    }
+}
+
+Sealed class:
+1.collection of non-abstract methods.
+2.variables are allowed to declare.
+3.Sealed class can be instantiated but cannot be inherited.
+
+namespace ConsoleApp1
+{
+    sealed class Sample
+    {
+        protected double d1, d2;
+
+        public  void print() 
+        {
+            Console.WriteLine("enter 2 dimension");
+            d1 = double.Parse(Console.ReadLine());
+            d2 = double.Parse(Console.ReadLine());
+        }
+
+        public double areaRt()
+        {
+            return (d1 * d2);
+        }
+
+        public double areaTR()
+        {
+            return (0.5*d1 * d2);
+        }
+    }
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            obj.print();
+            Console.WriteLine("Area of triangle=" + obj.areaTR());
+            Console.WriteLine("Area of rectangle=" + obj.areaRt());
+        }
+    }
+}
+
+
+Partial class:
+
+namespace ConsoleApp1
+{
+    partial class Sample
+    {
+        protected double d1, d2;
+    }
+    partial class Sample
+    {
+        public void print()
+        {
+            Console.WriteLine("enter 2 dimension");
+            d1 = double.Parse(Console.ReadLine());
+            d2 = double.Parse(Console.ReadLine());
+        }
+    }
+    partial class Sample
+    {
+        public double areaRt()
+        {
+            return (d1 * d2);
+        }
+    }
+    partial class Sample
+    {
+        public double areaTR()
+        {
+            return (0.5*d1 * d2);
+        }
+    }
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            obj.print();
+            Console.WriteLine("Area of triangle=" + obj.areaTR());
+            Console.WriteLine("Area of rectangle=" + obj.areaRt());
+        }
+    }
+}
+
+Partial Methods:
+
+-->Partial Methods are declared in partial class.
+-->Partial Methods are private by default.
+-->Partial Method cannot have access modifier.
+-->Partial Method can only have void as return type.
+
+namespace ConsoleApp1
+{
+    partial class Sample
+    {
+        partial void method1();
+        partial void method2();
+    }
+
+    partial class Sample
+    {
+        int len, bh;
+
+        public void getdetails()
+        {
+            Console.WriteLine("input data");
+            len = Convert.ToInt32(Console.ReadLine());
+            bh = Convert.ToInt32(Console.ReadLine());
+            method1();
+        }
+
+        partial void method1()
+        {
+            Console.WriteLine("Area="+(len*bh));
+            method2();
+        }
+        partial void method2()
+        {
+            Console.WriteLine("Area=" + (Math.Sqrt(len * bh)));
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            obj.getdetails();
+        }
+    }
+}
+
+Operator Overloading:
+
+types of Operator Overloading
+1.Unary ->single operand
+class Demo
+{
+int var1=-100;
+}
+-obj;
+2.Binary->two operand
+class Demo
+{
+int var1;
+}
+obj1(100);
+obj2(200);
+obj1+obj2
+obj1-obj2
+
+static operator --()
+
+
+namespace ConsoleApp1
+{
+    class Sample
+    {
+        int a, b;
+        public Sample(int a,int b)
+        {
+            this.a = a;
+            this.b = b;
+        }
+        public static Sample operator -(Sample obj)
+        {
+            obj.a = -obj.a;
+            obj.b = -obj.b;
+            return obj;
+        }
+
+        public void print()
+        {
+            Console.WriteLine(a + "," + b);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample(100,-200);
+            obj=-obj;
+            obj.print();
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    class Sample
+    {
+        int a;
+        double b;
+
+        public Sample()
+        {
+        }
+        public Sample(int a,double b)
+        {
+            this.a = a;
+            this.b = b;
+        }
+        public static Sample operator -(Sample obj1,Sample obj2)
+        {
+            Sample temp = new Sample();
+            temp.a = obj1.a - obj2.a;
+            temp.b= obj1.b - obj2.b;
+            return temp;
+        }
+
+        public static Sample operator +(Sample obj1, Sample obj2)
+        {
+            Sample temp = new Sample();
+            temp.a = obj1.a + obj2.a;
+            temp.b = obj1.b + obj2.b;
+            return temp;
+        }
+
+        public void print()
+        {
+            Console.WriteLine(a + "," + b);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample s1 = new Sample(100,20.78);
+            Sample s2 = new Sample(10, 20.67);
+            Sample s3 = new Sample();
+            s3= s1 - s2;
+            Sample s4 = new Sample();
+            s4 = s1 + s2;
+
+            s3.print();
+            s4.print();
+        }
+    }
+}
+
+
+is and as operator:
+
+->"is" operator returns bool value.
+->is operator "to check" the runtime type of an object is compatiable with given type or not.
+->"is" operator is used only for reference(object)
+
+namespace ConsoleApp1
+{
+    class Sample1
+    {
+    }
+    class Sample2
+    {
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample1 s1 = new Sample1();
+            Sample2 s2 = new Sample2();
+
+            Console.WriteLine(s1 is Sample1);
+            Console.WriteLine(s2 is Sample1);
+
+
+            Console.WriteLine(s1 is Sample2);
+            Console.WriteLine(s2 is Sample2);
+
+            Console.WriteLine(s1 is object);
+            Console.WriteLine(s2 is object);
+        }
+    }
+}
+
+as operator:
+as operator is used "to perform conversion" between the compatible types.
+
+namespace ConsoleApp1
+{
+    class Sample1
+    {
+    }
+    class Sample2
+    {
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            object[] objarray = new object[7];
+            objarray[0] = new Sample1();
+            objarray[1] = new Sample2();
+            objarray[2] = "hello";
+            objarray[3] = 1234;
+            objarray[4] = 345.66;
+            objarray[5] = true;
+            objarray[6] = null;
+
+
+            for(int i=0;i<objarray.Length;i++)
+            {
+                string result = objarray[i] as string;
+                if (result != null)
+                    Console.WriteLine(result);
+                else
+                    Console.WriteLine("not a string"+result);
+            }
+
+        }
+    }
+
+
+Nested namespace:
+
+namespace ConsoleApp1
+{
+    namespace n1
+    {
+        class Sample
+        {
+            public void print()
+            {
+                Console.WriteLine("C#.NET AND MVC");
+            }
+        }
+    }
+   namespace n2
+    {
+        class Sample
+        {
+            public void print()
+            {
+                Console.WriteLine("ajax and jquery");
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            n1.Sample obj = new n1.Sample();
+            obj.print();
+
+            n2.Sample obj1 = new n2.Sample();
+            obj1.print();
+        }
+    }
+}
+
+
+ref,out,params,named,default/optional parameters
+
+namespace ConsoleApp1
+{
+        class Sample
+        {
+            public void swap(int a ,int b)
+            {
+            int temp;
+            temp = a;
+            a = b;
+            b = temp;
+            Console.WriteLine("a="+a+",b="+b);
+            }
+        }
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            int a = 100, b = 200;
+            obj.swap(a, b); //call  by value
+        }
+    }
+
+namespace ConsoleApp1
+{
+        class Sample
+        {
+            public void swap(ref int a ,ref int b)
+            {
+            int temp;
+            temp = a;
+            a = b;
+            b = temp;
+            Console.WriteLine("a="+a+",b="+b);
+            }
+        }
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            int a = 100, b = 200;
+            obj.swap(ref a, ref b); //call  by ref
+        }
+    }
+
+namespace ConsoleApp1
+{
+        class Sample
+        {
+            public void method1(int a ,int b,out int r1,out int r2,out int r3)
+            {
+                r1 = a + b;
+                r2 = a - b;
+                r3 = a * b;
+            }
+        }
+   
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            int a = 100, b = 200,Result1,Result2,Result3;
+            obj.method1(a,b,out Result1,out Result2,out Result3);
+
+            Console.WriteLine("sum=" + Result1);
+            Console.WriteLine("Diff=" + Result2);
+            Console.WriteLine("Product=" + Result3);
+        }
+    }
+
+params:
+
+namespace ConsoleApp1
+{
+        class Sample
+        {
+        public void method1(params int[] a)
+        {
+            foreach(int i in a)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("------------");
+        }
+            public void method2(params object[] a)
+            {
+                foreach (var i in a)
+                {
+                    Console.WriteLine(i);
+                }
+                Console.WriteLine("------------");
+            }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            obj.method1(10, 20, 30);
+            obj.method1(10, 20, 30,40,50,60,70,80);
+            obj.method2(1, "printer", 35000, 2, "LAPTOP", 70000);
+        }
+    }
+}
+
+
+namespace ConsoleApp1
+{
+        class Sample
+        {
+            public void studentDetails(int regno,string sname,string smailid,string course)
+            {
+                Console.WriteLine(regno+","+sname+","+smailid+","+course);
+                Console.WriteLine("------------");
+            }
+
+            public void BookDetails(string bname,double price,string auname = "robert")
+            {
+                Console.WriteLine(bname+","+auname+","+price);
+                Console.WriteLine("------------");
+            }
+        }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            obj.studentDetails(1,"AJAY","ajay@gmail.com",".NET-FULL STACK");
+            
+            obj.studentDetails(smailid:"jay@gmail.com", course:"JAVA-FULL STACK", sname:"jay", regno:3);
+
+            obj.BookDetails("c++ pro",2400);
+
+            obj.BookDetails("C# PRO", 5400,"ANDREW");//default or optional
+        }
+    }
+}
+
+Properties and Indexer:
+
+Properties:
+-->provides access to private data members of class
+-->get,set accessors.
+
+namespace ConsoleApp1
+{
+        class Book
+        {
+        int bid;
+        string bname;
+        string auname;
+
+        public int _bid
+        {
+            get { return bid; }
+            set { bid = value; }
+        }
+
+        public string _bname
+        {
+            get { return bname; }
+            set { bname = value; }
+        }
+
+        public string _auname
+        {
+            get { return auname; }
+            set { auname = value; }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book obj = new Book();
+            obj._bid = 1; //set
+            obj._bname = "SQL"; //set
+            obj._auname = "symond"; //set
+
+            Console.WriteLine(obj._bid+","+obj._bname+","+obj._auname); //get
+        }
+    }
+}
+
+
+Readonly property:
+
+namespace ConsoleApp1
+{
+        class Book
+        {
+        int bid;
+        string bname;
+        string auname;
+
+        public Book()
+        {
+            bid = 1;
+            bname = "JAVA";
+            auname = "XXXXX";
+        }
+
+        public int _bid
+        {
+            get { return bid; }
+        }
+
+        public string _bname
+        {
+            get { return bname; }
+        }
+
+        public string _auname
+        {
+            get { return auname; }
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book obj = new Book();
+            //obj._bid = 1; //set
+            //obj._bname = "SQL"; //set
+            //obj._auname = "symond"; //set
+
+            Console.WriteLine(obj._bid+","+obj._bname+","+obj._auname); //get
+        }
+    }
+}
+
+writeonly property:
+namespace ConsoleApp1
+{
+        class Book
+        {
+        int bid;
+        string bname;
+        string auname;
+
+        public int _bid
+        {
+            set { bid = value; }
+        }
+
+        public string _bname
+        {
+            set { bname = value; }
+        }
+
+        public string _auname
+        {
+            set { auname = value; }
+        }
+
+        public void print()
+        {
+            Console.WriteLine(bid + "," + bname + "," +auname);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book obj = new Book();
+            obj._bid = 1; //set
+            obj._bname = "SQL"; //set
+            obj._auname = "symond"; //set
+
+            obj.print();
+        }
+    }
+}
+
+
+Auto-generated Property(object intialiser):
+
+namespace ConsoleApp1
+{
+        class Book
+        {
+             public int bid { get; set; }
+
+             public string bname { get; set; }
+
+             public double bprice { get; set; }
+        }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book obj = new Book() {bid=1,bname="VB.NET",bprice=4500 }; //object intialiser
+            //obj.bid = 1; //set
+            //obj.bname = "SQL"; //set
+            //obj.bprice = 45.66; //set
+
+            Console.WriteLine(obj.bid + "," + obj.bname+","+obj.bprice);
+        }
+    }
+}
+
+
+Indexer:
+->Indexer are used when data-member is an array.
+->indexer does not have name.
+->It has get and set accessor.
+
+namespace ConsoleApp1
+{
+        class Demo
+        {
+            int[] a=new int[4];
+
+            public Demo()
+                {
+                  a = new int[] {10,20,30,40 };
+                }
+
+            public int this[int index]
+            {
+                get { return a[index]; }
+                set { a[index] = value; }
+            }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+            obj[0] = 100; //set
+            obj[3] = 400;
+
+            for(int i=0;i<4;i++)
+            {
+                Console.WriteLine(obj[i]); //get
+            }
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+        class Demo
+        {
+            int[,] a=new int[2,2];
+
+            public Demo()
+                {
+                  a = new int[,] { { 10, 20 },{ 30, 40 } };
+                }
+
+            public int this[int index1,int index2]
+            {
+                get { return a[index1,index2]; }
+                set { a[index1,index2] = value; }
+            }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo();
+            obj[0,0] = 15; //set
+            obj[1,0] = 35;
+
+            for(int i=0;i<2;i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    Console.Write(obj[i,j]+"\t");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+    }
+}

@@ -1,0 +1,911 @@
+JSON serialization:
+
+JSON->javascript object notation
+json is one of the text based std for data-transfer.
+
+id,name,price,category-->object
+
+Json:
+{id:"P001",name:"computer",price:456.66,category:"electronics"}-->json
+
+xml:
+<id>P001</id>
+<name>computer</name>
+
+using System.IO;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization;
+
+namespace ConsoleApp1
+{
+    [DataContract]
+    class Product
+    {
+        [DataMember]
+        public int pid;
+        [DataMember]
+        public string pname;
+        [DataMember]
+        public double price;
+        public Product()
+        {
+            pid = 1;
+            pname = "computer";
+            price = 45000;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //FileStream fs = new FileStream("D:\\file10.txt", FileMode.Create);
+            //Product Pobj = new Product();
+            //DataContractJsonSerializer sr = new DataContractJsonSerializer(typeof(Product));
+            //sr.WriteObject(fs, Pobj);
+            //fs.Close();
+
+
+            FileStream fs = new FileStream("D:\\file10.txt", FileMode.Open);
+            
+            DataContractJsonSerializer sr = new DataContractJsonSerializer(typeof(Product));
+            Product Pobj =(Product)sr.ReadObject(fs);
+            Console.WriteLine(Pobj.pid + "," + Pobj.pname + "," + Pobj.price);
+            fs.Close();
+        }
+    }
+}
+
+collections:
+System.Collections; -->non-generic(non typesafe)
+
+ArrayList
+Hashtable
+SortedList
+stack
+queue
+
+
+
+
+
+
+ static void Main(string[] args)
+        {
+            int[] array1 = new int[3] {400,500,600 }; //static array
+
+            ArrayList List1 = new ArrayList();//dynamic array
+            List1.Add(100);
+            List1.Add(200);
+            List1.Add(300);
+            List1.Add(400);
+
+            List1.AddRange(array1);
+
+            foreach(int i in List1)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+ static void Main(string[] args)
+        {
+            int[] array1 = new int[3] {400,500,600 }; //static array
+
+            ArrayList List1 = new ArrayList();//dynamic array
+            List1.Add(1000);
+            List1.Add(2000);
+            List1.Add(300);
+            List1.Add(400);
+            //List1.Add("C#.NET");
+            //List1.Add(45.56);
+            //List1.Add('X');
+
+            List1.AddRange(array1);
+
+            //List1.Sort();
+            //List1.Reverse();
+
+            List1.Remove(400);
+           // List1.RemoveAt(1);
+            //List1.RemoveRange(0, 3);
+
+            foreach (var i in List1)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+Hashtable:
+-->stored data in key-value pair format
+-->key's of hashtable cannot be duplicated.
+-->key's are stored randomly
+
+static void Main(string[] args)
+        {
+            Hashtable ht = new Hashtable();
+            ht.Add("XML", "Extensible markup lang");
+            ht.Add("JSON", "javascript object notation");
+            ht.Add("SOAP", "SIMPLE OBJECT ACCESS PROTOCOL");
+            ht.Add("XAML", "Extensible Application markup lang");
+            ht.Add("AJAX", "Asynchronous javascript and xml");
+
+            ICollection Ckeys = ht.Keys;
+
+            foreach (string i in Ckeys)
+            {
+                Console.WriteLine(i);
+            }
+
+            ICollection Cvalues = ht.Values;
+            foreach (string i in Cvalues)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("-------------------");
+
+            IDictionaryEnumerator IDE = ht.GetEnumerator();
+            while(IDE.MoveNext())
+            {
+                Console.WriteLine(IDE.Key + "-->" + IDE.Value);
+            }
+
+            Console.WriteLine("-------------------");
+            foreach (DictionaryEntry DE in ht)
+            {
+                Console.WriteLine(DE.Key + "--" + DE.Value);
+            }
+        }
+
+SortedList:
+static void Main(string[] args)
+        {
+            SortedList ht = new SortedList();
+            ht.Add("XML", "Extensible markup lang");
+            ht.Add("JSON", "javascript object notation");
+            ht.Add("SOAP", "SIMPLE OBJECT ACCESS PROTOCOL");
+            ht.Add("JSON", "Extensible Application markup lang");
+            ht.Add("AJAX", "Asynchronous javascript and xml");
+
+            ICollection Ckeys = ht.Keys;
+
+            foreach (string i in Ckeys)
+            {
+                Console.WriteLine(i);
+            }
+
+            ICollection Cvalues = ht.Values;
+            foreach (string i in Cvalues)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("-------------------");
+
+            IDictionaryEnumerator IDE = ht.GetEnumerator();
+            while(IDE.MoveNext())
+            {
+                Console.WriteLine(IDE.Key + "-->" + IDE.Value);
+            }
+
+            Console.WriteLine("-------------------");
+            foreach (DictionaryEntry DE in ht)
+            {
+                Console.WriteLine(DE.Key + "--" + DE.Value);
+            }
+        }
+    }
+}
+
+static void Main(string[] args)
+        {
+            Stack obj = new Stack(); //LIFO
+            obj.Push(100);
+            obj.Push(200);
+            obj.Push(300);
+            obj.Push(400);
+
+            obj.Pop();
+
+            foreach (int D in obj)
+            {
+                Console.WriteLine(D);
+            }
+        }
+
+static void Main(string[] args)
+        {
+            Stack obj = new Stack(); //LIFO
+            obj.Push("hello");
+            obj.Push("hai");
+            obj.Push("welcome");
+            obj.Push(300);
+            obj.Push(400.34);
+
+            obj.Pop();
+
+            foreach (var D in obj)
+            {
+                Console.WriteLine(D);
+            }
+        }
+
+static void Main(string[] args)
+        {
+            Queue obj = new Queue(); //FIFO
+            obj.Enqueue("hello");
+            obj.Enqueue("hai");
+            obj.Enqueue("welcome");
+            obj.Enqueue(300);
+            obj.Enqueue(400.34);
+
+            obj.Dequeue();
+
+            foreach (var D in obj)
+            {
+                Console.WriteLine(D);
+            }
+        }
+
+using System.Collections.Generic;-->Generic (typesafe)
+
+List<int>
+Dictionary<int,int>
+SortedDictionary<int,string>
+Hashset<string>
+stack<string>
+queue<string>
+
+static void Main(string[] args)
+        {
+            List<string> list1 = new List<string>();
+            list1.Add("C#.NET");
+            list1.Add("J#.NET");
+            list1.Add("F#.NET");
+            list1.Add("VB.NET");
+
+            list1.AddRange(new string[3] {"AJAX","JQUERY","HTML" });
+
+            //list1.Remove("HTML");
+            //list1.RemoveAt(0);
+            //list1.RemoveRange(0, 4);
+
+            // list1.Sort();
+            list1.Reverse();
+
+            foreach (string i in list1)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+Dictionary<int,int>:
+
+-->stored data in key-value pair format
+-->key's of Dictionary cannot be duplicated.
+-->key's are stored in the same order of entry.
+
+static void Main(string[] args)
+        {
+            Dictionary<int, string> di = new Dictionary<int, string>();
+
+            di.Add(3, "ASP.NET");
+            di.Add(2, "MVC");
+            di.Add(1, "WPF");
+            di.Add(4, "");
+
+            ICollection<int> keys = di.Keys;
+
+            foreach (int i in keys)
+            {
+                Console.WriteLine(i);
+            }
+
+            ICollection<string> values = di.Values;
+
+            foreach (string i in values)
+            {
+                Console.WriteLine(i);
+            }
+            IDictionaryEnumerator IDE = di.GetEnumerator();
+            while(IDE.MoveNext())
+            {
+                Console.WriteLine(IDE.Key + "," + IDE.Value);
+            }
+
+            foreach(KeyValuePair<int,string> kvp in di)
+            {
+                Console.WriteLine(kvp.Key+"-->"+kvp.Value);
+            } 
+        }
+
+
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            SortedDictionary<int, string> di = new SortedDictionary<int, string>();
+            di.Add(3, "ASP.NET");
+            di.Add(2, "MVC");
+            di.Add(1, "WPF");
+            di.Add(4, "");
+
+            ICollection<int> keys = di.Keys;
+
+            foreach (int i in keys)
+            {
+                Console.WriteLine(i);
+            }
+
+            ICollection<string> values = di.Values;
+
+            foreach (string i in values)
+            {
+                Console.WriteLine(i);
+            }
+
+            IDictionaryEnumerator IDE = di.GetEnumerator();
+            while(IDE.MoveNext())
+            {
+                Console.WriteLine(IDE.Key + "," + IDE.Value);
+            }
+
+            foreach(KeyValuePair<int,string> kvp in di)
+            {
+                Console.WriteLine(kvp.Key+"-->"+kvp.Value);
+            }
+        }
+    }
+}
+
+
+Hashset<string>:
+
+static void Main(string[] args)
+        {
+            HashSet <string> hs = new HashSet<string>();
+            hs.Add("HTML");
+            hs.Add("DHTML");
+            hs.Add("JAVASCRIPT");
+            hs.Add("JQUERY");
+
+            HashSet<string> hs1 = new HashSet<string>();
+            hs1.Add("JAVA");
+            hs1.Add("PHP");
+            hs1.Add("HTML");
+            hs1.Add("DHTML");
+
+            //hs.UnionWith(hs1);
+            //hs.IntersectWith(hs1);
+
+            hs1.ExceptWith(hs);
+
+            foreach (string i in hs1)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+
+stack and queue:
+
+  static void Main(string[] args)
+        {
+            Stack<string> obj = new Stack<string>(); //LIFO
+            obj.Push("hello");
+            obj.Push("hai");
+            obj.Push("welcome");
+            obj.Push("300");
+            obj.Push("400.34");
+
+            obj.Pop();
+
+            foreach (string D in obj)
+            {
+                Console.WriteLine(D);
+            }
+
+            Queue<string> obj = new Queue<string>(); //FIFO
+            obj.Enqueue("hello");
+            obj.Enqueue("hai");
+            obj.Enqueue("welcome");
+            obj.Enqueue("300");
+            obj.Enqueue("400.34");
+
+            obj.Dequeue();
+
+            foreach (string D in obj)
+            {
+                Console.WriteLine(D);
+            }
+        }
+    }
+
+User_Defined Generic Class:
+
+namespace ConsoleApp1
+{
+    //User_Defined Generic Class
+    class Book<T1,T2,T3>
+    {
+        T1 Bid;
+        T2 Bname;
+        T3 Bprice;
+
+        public Book(T1 Bid,T2 Bname,T3 Bprice)
+        {
+            this.Bid = Bid;
+            this.Bname = Bname;
+            this.Bprice = Bprice;
+        }
+
+        public void print()
+        {
+            Console.WriteLine($"Book Id:{this.Bid}");
+            Console.WriteLine($"Book Name:{Bname}");
+            Console.WriteLine($"Book Price:{Bprice}");
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Book<int, string, double> Bobj1 = new Book<int, string, double>(1, "C#_PRO", 4.4);
+            Bobj1.print();
+
+            Book<int, string, string> Bobj2 = new Book<int, string, string>(2, "VB.NET_PRO","$56");
+            Bobj2.print();
+
+            Book<string, string, string> Bobj3 = new Book<string, string, string>("VB001SC", "VB.NET_PRO", "$56");
+            Bobj3.print();
+        }
+    }
+}
+
+
+Exception Handling:
+
+Errors: 2 types
+
+1.compile-time-->syntax,wrong logic
+2.runtime -->erros which occurs during "runtime" are called as "Exceptions"
+
+Exception Handling blocks:
+try,catch,throw,finally
+
+Exception-->Base class 
+
+DivideByzeroException
+InvalidcastException
+ArrayboundException
+IndexoutRangeException
+ArgumentException
+ArgumentNullException
+
+ static void Main(string[] args)
+        {
+            Stack obj = new Stack(); //LIFO
+            obj.Push("hello");
+            obj.Push("hai");
+            obj.Push("welcome");
+            obj.Push(300);
+            obj.Push(400.34);
+
+            try
+            {
+                foreach (string D in obj)
+                {
+                    Console.WriteLine(D);
+                }
+            }
+            catch(InvalidCastException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+
+static void Main(string[] args)
+        {
+            int a, b;
+            a = 100;
+            b = 10;
+            try
+            {
+               Console.WriteLine("Result="+(a/b));
+            }
+            catch(InvalidCastException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("End of program");
+            }
+        }
+
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] a = new int[] {11,22,33,44,55 };
+            int[] b = new int[3];
+
+            try
+            {
+                a.CopyTo(b, 0);
+                foreach(int i in b)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            catch (DivideByZeroException ex)
+            {
+            Console.WriteLine(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("Destination array length is not sufficient");
+            }
+            finally
+            {
+                Console.WriteLine("End of program");
+            }
+        }
+    }
+}
+
+"throw"
+
+namespace ConsoleApp1
+{
+    class Demo
+    {
+        public void validate(string username)
+        {
+            if (username.Length >= 3 && username!="null")
+                Console.WriteLine("welcome...." + username);
+            else
+                throw new ArgumentNullException();
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string username;
+            Console.WriteLine("enter your name");
+            username = Console.ReadLine();
+
+            try
+            {
+                Demo obj = new Demo();
+                obj.validate(username);
+            }
+            catch (ArgumentNullException ex)
+            {
+             Console.WriteLine("invalid username");
+            }
+            finally
+            {
+                Console.WriteLine("End of program");
+            }
+        }
+    }
+}
+
+
+User-Defined Exception:
+
+namespace ConsoleApp1
+{
+    class InvalidAgeException:Exception
+    {
+        public InvalidAgeException():base()
+        {
+
+        }
+    }
+
+    class Demo
+    {
+        public void validate(int age)
+        {
+            if (age>=18 && age<=65)
+                Console.WriteLine("valid user");
+            else
+                throw new InvalidAgeException();
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int age;
+            Console.WriteLine("enter your age");
+            age =int.Parse( Console.ReadLine());
+            try
+            {
+                Demo obj = new Demo();
+                obj.validate(age);
+            }
+            catch (InvalidAgeException ex)
+            {
+             Console.WriteLine("invalid age"+","+ex.Source+ex.StackTrace);
+            }
+            finally
+            {
+                Console.WriteLine("End of program");
+            }
+        }
+    }
+}
+
+InnerException:
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] a = new int[] {10,20,30,40 };
+            try
+            {
+                try
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Console.WriteLine(a[i]);
+                    }
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    if (File.Exists("D:\\file12.txt") == false)
+                    {
+                        throw new FileNotFoundException();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.Write(ex.Message);
+                if(ex.InnerException!=null)
+                {
+                    Console.WriteLine("Inner exception");
+                    Console.WriteLine(ex.InnerException);
+                    Console.WriteLine( ex.Message);
+                }
+            }
+            
+        }
+    }
+}
+
+try-finally vs "using"
+
+static void Main(string[] args)
+        {
+            //FileStream fs = null; 
+            //StreamReader sr=null;
+            //try
+            //{
+            //     fs = new FileStream("D:\\file10.txt", FileMode.Open);
+            //     sr= new StreamReader(fs);
+            //     Console.WriteLine(sr.ReadLine());
+            //}
+            //finally
+            //{
+            //    fs.Close();
+            //    sr.Close();
+            //}
+
+            using (FileStream fs = new FileStream("D:\\file10.txt", FileMode.Open))
+            {
+                StreamReader sr = new StreamReader(fs);
+                Console.WriteLine(sr.ReadLine());
+                sr.Close();
+            }
+
+        }
+
+
+
+
+
+dynamic and var:
+
+
+
+dynamic->"runtime checker"
+
+static void Main(string[] args)
+        {
+            int x = 100;
+            string y = x; //compile time checking
+
+            string str = "hello";
+            int result = str;
+ // -----------------------------------------------
+            dynamic x;
+
+            x = "hello";
+
+            string y = x; //runtime checking
+
+            Console.WriteLine(y);
+
+ // -----------------------------------------------
+            var x= 100; //compile time checking
+
+            string y = x;
+
+            Console.WriteLine(y);
+
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    class Demo
+    {
+        public void method1(dynamic x,dynamic y)
+        {
+            Console.WriteLine(x + y);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            dynamic v1 = 1.2;
+            dynamic v2 = "HELLO";
+            dynamic v3 = true;
+
+            Console.WriteLine(v1.GetType().ToString());
+            Console.WriteLine(v2.GetType().ToString());
+            Console.WriteLine(v3.GetType().ToString());
+
+            Demo obj = new Demo();
+            obj.method1(10, 20);
+            obj.method1("c#.net-", 6.0);
+            obj.method1(1.22, 6.0);
+            obj.method1("MVC","-CORE");
+        }
+    }
+}
+
+Anonymus types->dynamic
+
+Anonymus-->"no name"
+-->variables with assigned values,without datatype is refferd as Anonymus types
+-->var and new keywords are used to define Anonymus types
+
+ class Demo
+    {
+        public static void display(dynamic det)
+        {
+            Console.WriteLine(det);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var studentdet = new {
+                                   Regno=1,
+                                   Name="AJay",
+                                   course="JAVA FULLSTACK"
+                                 };
+
+            Console.WriteLine(studentdet.Regno+","+studentdet.Name);
+            Console.WriteLine(studentdet.course);
+
+            Demo.display(studentdet);
+        }
+    }
+
+namespace ConsoleApp1
+{
+    class Demo
+    {
+        public static void display(dynamic det)
+        {
+            Console.WriteLine(det);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var studentdet = new {
+                                   Regno=1,
+                                   Name="AJay",
+                                   course=".NET FULLSTACK",
+                                   coursedet=new {
+                                                   Cdesc="C#.NET,SQL,LINQ,EF-CORE,WEBAPI",
+                                                   Cduration="2 months",
+                                                   cfee=85000
+                                                  }
+                                 };
+
+            Console.WriteLine(studentdet.Regno+","+studentdet.Name);
+            Console.WriteLine(studentdet.course);
+            Console.WriteLine(studentdet.coursedet.Cdesc);
+            Console.WriteLine(studentdet.coursedet.Cduration + "," + studentdet.coursedet.cfee);
+
+            Demo.display(studentdet);
+        }
+    }
+}
+
+Anonymus methods-->delegate
+
+methods without name is reffered as "Anonymus methods"
+
+
+namespace ConsoleApp1
+{
+    delegate void method1();
+    delegate void method2(int n);
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            method1 obj = delegate {
+                                    Console.WriteLine("anonymus method");
+                                   };
+            obj();
+
+            method2 obj1 = delegate(int n) {
+                                    for(int i=1;i<=n;i++)
+                                        {
+                                          Console.WriteLine(i);
+                                        }
+                                    };
+
+            obj1(5);
+
+
+        }
+    }
+}
+
+namespace ConsoleApp1
+{
+    delegate int method3(int a, int b);
+    delegate int method4(int n);
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            method3 obj2 = delegate (int a, int b)
+                                      {
+                                          return (a + b);
+                                      };
+            
+            Console.WriteLine("Sum=" + obj2(10, 20));
+
+            method4 obj3 = delegate (int n) {
+                                                 int sum = 0;
+                                                    for (int i = 1; i <= n; i++)
+                                                    {
+                                                               sum = sum + i;
+                                                    }
+                                                 return sum;
+                                           };
+
+
+            Console.WriteLine("Sum of numbers=" + obj3(10));
+        }
+    }
+}

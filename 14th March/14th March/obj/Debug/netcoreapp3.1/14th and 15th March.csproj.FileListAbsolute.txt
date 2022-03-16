@@ -1,0 +1,14 @@
+E:\Yamiee\Capgemini Dot net\14th March\14th March\bin\Debug\netcoreapp3.1\14th and 15th March.exe
+E:\Yamiee\Capgemini Dot net\14th March\14th March\bin\Debug\netcoreapp3.1\14th and 15th March.deps.json
+E:\Yamiee\Capgemini Dot net\14th March\14th March\bin\Debug\netcoreapp3.1\14th and 15th March.runtimeconfig.json
+E:\Yamiee\Capgemini Dot net\14th March\14th March\bin\Debug\netcoreapp3.1\14th and 15th March.runtimeconfig.dev.json
+E:\Yamiee\Capgemini Dot net\14th March\14th March\bin\Debug\netcoreapp3.1\14th and 15th March.dll
+E:\Yamiee\Capgemini Dot net\14th March\14th March\bin\Debug\netcoreapp3.1\14th and 15th March.pdb
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.GeneratedMSBuildEditorConfig.editorconfig
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.AssemblyInfoInputs.cache
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.AssemblyInfo.cs
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.csproj.CoreCompileInputs.cache
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.dll
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.pdb
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.genruntimeconfig.cache
+E:\Yamiee\Capgemini Dot net\14th March\14th March\obj\Debug\netcoreapp3.1\14th and 15th March.csproj.AssemblyReference.cache

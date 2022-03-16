@@ -1,0 +1,743 @@
+C#
+
+Control statements:
+2 types of Control statements
+
+1.Conditional
+if-else,nested-elseif,switch-case
+
+2.Iterational(loops)
+while,do-while,for,for-each
+
+Arrays:
+
+collection of homogenous elements/group of elements of same-kind.
+
+int []array1=new int[10];
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array1 = new int[5] {10,20,30,40,50 };
+
+            int[] array2 = new int[10];
+
+            int[] array3 = new int[] {100,200,300,400 };
+
+            for(int i=0;i<array1.Length;i++) //0 to 4
+            {
+                Console.WriteLine("array1["+i+"]="+array1[i]);
+            }
+
+        }
+    }
+
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] array1 = new int[5];
+            int[] array2 = new int[5];
+            int[] array3 = new int[5];
+
+            Console.WriteLine("enter the array elements for array1");
+            for (int i = 0; i < array1.Length; i++) 
+            {
+                array1[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("enter the array elements for array2");
+            for (int i = 0; i < array1.Length; i++)
+            {
+                array2[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Sum of array elements");
+            for (int i=0;i<array1.Length;i++) //0 to 4
+            {
+                array3[i] = array1[i] + array2[i];
+                Console.WriteLine("array3["+i+"]="+array3[i]);
+            }
+        }
+    }
+}
+
+
+
+
+object array:
+
+collection of heterogenous elements
+
+ static void Main(string[] args)
+        {
+            object[] product = new object[] {1,"LCD",4.45,2,"LED",67.66 };
+           
+            for (int i=0;i<product.Length;i+=2) 
+            {
+                Console.WriteLine(product[i]);
+            }
+
+            Console.WriteLine("-------");
+
+            foreach (var i in product)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+
+Two-dimensional Array:
+
+int [,] array1=new int[2,2];
+
+      j=0      j=1     j=2
+
+ i=0 10[00]   20[01]   100[02]
+
+
+ i=1 30[10]   40[11]   200[12]
+
+
+ i=2 50[20]   60[21]   90[22]
+
+
+static void Main(string[] args)
+        {
+            int[,] array1 = new int[2, 2] { {10,20 },{30,40 } };
+
+            for (int i=0;i<2;i++)  //i=1  2 times
+            {
+                for(int j=0;j<2;j++) //4 times
+                {
+                    Console.Write("["+i+"," +j+"]="+array1[i,j]+"\t");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] array1 = new int[2, 2];
+
+            Console.WriteLine("enter the array elements");
+
+            for (int i = 0; i < 2; i++)  //i=1  2 times
+            {
+                for (int j = 0; j < 2; j++) //4 times
+                {
+                    array1[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            for (int i=0;i<2;i++)  //i=1  2 times
+            {
+                for(int j=0;j<2;j++) //4 times
+                {
+                   Console.Write("["+i+"," +j+"]="+array1[i,j]+"\t");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+    }
+}
+
+Jagged Array:
+
+collection of array's
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int[][] Jarray = new int[4][];
+
+            Jarray[0] = new int[] {10,20,30,40 };
+            Jarray[1] = new int[] { 10, 20 };
+            Jarray[2] = new int[] { 100, 200, 300, 400,500,600 };
+            Jarray[3] = new int[] { 100, 200, 300 };
+
+            for (int i=0;i<Jarray.Length;i++)  
+            {
+                for(int j=0;j<Jarray[i].Length;j++) 
+                {
+                   Console.Write(Jarray[i][j]+"\t");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+    }
+
+static void Main(string[] args)
+        {
+            object[][] course = new object[3][];
+
+            course[0] = new object[] {1,2,3,4 };
+            course[1] = new object[] {"C#.NET","SQL","JAVA","PHP"  };
+            course[2] = new object[] {"1 month","15 days","1 month","1.5 month"};
+
+            for (int i=0;i< course.Length;i++)  
+            {
+                for(int j=0;j< course[i].Length;j++) 
+                {
+                   Console.Write(course[i][j]+"\t");
+                }
+                Console.WriteLine("\n");
+            }
+        }
+
+
+Parse and tryParse:
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            int result;
+
+            Console.WriteLine("input a number");
+            bool  b=int.TryParse(Console.ReadLine(),out result);
+
+            Console.WriteLine(b+","+result);
+        }
+    }
+
+
+static void Main(string[] args)
+        {
+            char ch;
+            Console.WriteLine("input a char");
+            ch =char.Parse( Console.ReadLine());
+
+            if(ch>='0' && ch<='9')
+            Console.WriteLine("It is a number");
+            else if (ch >= 'a' && ch <= 'z')
+                Console.WriteLine("It is a alpha");
+            else
+                Console.WriteLine("It is a special");
+        }
+
+
+Convert.ToInt32
+
+static void Main(string[] args)
+        {
+            bool var1=true; //0
+            int res;
+            res =Convert.ToInt32(var1);
+
+            Console.WriteLine(res);
+
+
+           // res1 =int.Parse(var1);
+        }
+
+
+String in C#:
+
+strings in c# is immutable(we cannot modify the string).
+
+static void Main(string[] args)
+        {
+            string str = "welcome to c# programming";
+            string str1 = "welcome to c# programming";
+
+            //function returning int value
+            Console.WriteLine(str.Length);
+            Console.WriteLine(str.IndexOf('m'));
+            Console.WriteLine(str.LastIndexOf('m'));
+
+            //function returning bool values
+            Console.WriteLine(str.StartsWith('w'));
+            Console.WriteLine(str.EndsWith('g'));
+            Console.WriteLine(str.Contains('z'));
+            Console.WriteLine(str.Equals(str1));
+
+            Console.WriteLine(string.Compare(str,str1)); //0,1,-1
+        }
+
+static void Main(string[] args)
+        {
+            string str1 = "welcome ";
+            string str2 = "to c# programming";
+
+            Console.WriteLine(string.Concat(str1, str2));
+
+            string str3=string.Copy(str1); //copy
+            Console.WriteLine(str3);
+
+            string str4 =(string) str1.Clone(); //reference
+            Console.WriteLine(str4);
+
+        }
+
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string str = "welcome to c# programming";
+
+            CharEnumerator ch = str.GetEnumerator();
+            while(ch.MoveNext())
+            {
+                Console.WriteLine(ch.Current);
+            }
+
+
+            char[] charray = str.ToCharArray();
+            foreach(char i in charray)
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+
+static void Main(string[] args)
+        {
+            string str = "welcome to c# programming";
+
+            string[] strarray = str.Split(' ');
+            foreach(string i in strarray)
+            {
+                Console.WriteLine(i);
+            }
+
+            string[] strarray1 = {"welcome","to","VB.NET","PROGRAMMING" };
+            string newstring = string.Join("-", strarray1);
+            Console.WriteLine(newstring);
+
+            //copyto
+            char[] charray = new char[35];
+            // str.CopyTo(0, charray, 0, str.Length);
+            str.CopyTo(11,charray,0,14);
+            Console.WriteLine(charray);
+
+        }
+
+static void Main(string[] args)
+        {
+            string str = "welcome to c# programming";
+
+            Console.WriteLine(str.Remove(7));
+
+            Console.WriteLine(str.Substring(7));
+
+            Console.WriteLine(str.Replace('c','j'));
+
+            Console.WriteLine(str.Replace("c#","VB.NET"));
+
+            Console.WriteLine(str.Insert(13, ".NET "));
+        }
+
+== and equals
+
+            
+==
+->It is operator.
+->returns bool value.
+->compare the reference
+
+equals
+->it is method
+->returns bool value.
+->compare the content/value.
+
+
+ static void Main(string[] args)
+        {
+            string str = "welcome";
+            string str1 = "welcome";
+
+            Console.WriteLine(str.Equals(str1));
+            Console.WriteLine(str==str1);
+        }
+
+ static void Main(string[] args)
+        {
+            object str1 = "welcome";
+            char[] charray = {'w','e','l','c','o','m','e' };
+            object str2 = new string(charray);
+
+            Console.WriteLine(str1.Equals(str2));
+            Console.WriteLine(str1==str2);
+        }
+
+stringbuilder:
+stringbuilder in c# is mutable.
+using System.Text;
+
+ static void Main(string[] args)
+        {
+            StringBuilder str = new StringBuilder("hello");
+
+            Console.WriteLine(str);
+        }
+
+namespace ConsoleApp1
+{
+    class Demo
+    {
+        public void method1(string s1)
+        {
+            string.Concat(s1, "JERSY");
+            Console.WriteLine(s1);
+        }
+
+        public void method2(StringBuilder s1)
+        {
+            s1.Append("Delhi");
+            Console.WriteLine(s1);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Demo obj = new Demo(); //obj[ ]
+
+            obj.method1("NEW");
+
+            StringBuilder s1 = new StringBuilder("NEW");
+            obj.method2(s1);
+        }
+    }
+}
+
+enum:set of named integer constants.
+namespace ConsoleApp1
+{
+    enum product { printer=347,projector,desktopPC=765,laptop }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine((int)product.projector);
+//or
+ Console.WriteLine(Convert.ToInt32(product.laptop));
+        }
+    }
+}
+
+structure:
+group of business-entities/data-member of different datatypes.
+
+namespace ConsoleApp1
+{
+    struct accdet
+    {
+        public int acno;
+        public string achname;
+        public double depamt;
+
+        public  void print()
+        {
+            Console.WriteLine(acno+","+achname+","+depamt);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            accdet firstdet;//= new accdet();
+
+            firstdet.acno = 1;
+            firstdet.achname = "jay";
+            firstdet.depamt = 350000;
+
+            //  Console.WriteLine(firstdet.acno+"," + firstdet.achname+"," + firstdet.depamt);
+            firstdet.print();
+
+            accdet secdet;//= new accdet();
+
+            secdet.acno = 2;
+            secdet.achname = "sujay";
+            secdet.depamt = 450000;
+            secdet.print();
+        }
+    }
+}
+
+nullable (?)
+
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            //int empid = null;
+
+            Nullable<int> empid = 12;
+            Console.WriteLine(empid);
+
+            Nullable<double> proprice = null;
+            Console.WriteLine(proprice);
+
+            int? custage = null;
+            Console.WriteLine(custage.GetValueOrDefault());
+
+            Console.WriteLine(custage.HasValue);
+
+        }
+    }
+
+value and reference type:
+
+value type:
+-->uses stack memory
+-->holds the data within its own memory.
+
+predefined datatypes(int,char,double,decimal,float),enum,struct
+
+
+
+reference types:
+-->uses heap memory
+-->contains a pointer to another memory location,that holds the data.
+
+string,stringbuilder,class,object,array,interface,property,indexer.
+
+string-->string in c# are "ref" type.they behave like value type.
+
+string str="hello";
+
+
+
+Boxing and Unboxing:
+
+
+boxing:- method of converting value type to ref type.
+ int x = 100;
+object y = x;  //boxing
+
+Unboxing: method of converting ref type to value type.
+
+int result =(int)y; //unboxing
+
+static void Main(string[] args)
+        {
+            int x = 100;
+
+            object y = x;  //boxing,implicit conversion
+
+            Console.WriteLine(y);
+
+            int result =(int)y; //unboxing,explicit conversion
+
+            Console.WriteLine(result);
+        }
+
+
+
+WAP to store product Details using struct.
+1.pcode,pname,unitprice
+2.store and display the product details for 3 products.
+
+WAP to input 10 array elements for integer array and 
+1.display index of every element with value.
+2.display the sum of all array elements.
+
+
+OOPS: 
+
+1.Class and Object
+2.constructor and destructor
+3.Inheritance(single,multi-level,multiple,heirarchial,hybrid)
+base class,derived class
+static const,instance const
+4.Interface 
+5.Polymorphism [compile-time,runtime]
+
+static:
+static variable and non-static variable
+static method and non-static method
+static const,instance const
+static class
+
+1.Class and Object:
+
+Class->
+It acts like template.
+collection of business entities and methods/functions.
+
+access specifier->private,protected,public
+ 
+internal,protected internal
+
+namespace ConsoleApp1
+{
+    class Employee
+    {
+        int eid;
+        string ename;
+        string dept;
+
+        public void getempdet()
+        {
+            Console.WriteLine("enter employee Details(id,name,dept)");
+            eid = Convert.ToInt32(Console.ReadLine());
+            ename = Console.ReadLine();
+            dept= Console.ReadLine();
+        }
+
+        public void printempdet()
+        {
+            Console.WriteLine("id={0},ename={1},dept={2}",eid,ename,dept);
+            Console.WriteLine("id="+eid+"ename="+ename+"dept="+dept);
+            Console.WriteLine($"EmpId={eid},Empname={ename},EmpDept={dept}");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee e1 = new Employee();// e1[     ]
+            e1.getempdet(); //e1[ 1,"john","Testing"   ]
+            e1.printempdet(); //e1[1,"john","Testing"  ]
+            
+            Employee e2 = new Employee();// e2[]
+            e2.getempdet();
+            e2.printempdet();
+            
+        }
+    }
+}
+
+
+namespace ConsoleApp1
+{
+    class Employee
+    {
+        int eid;
+        string ename;
+        string dept;
+       public double esal;
+
+        public void getempdet()
+        {
+            Console.WriteLine("enter employee Details(id,name,dept)");
+            eid = Convert.ToInt32(Console.ReadLine());
+            ename = Console.ReadLine();
+            dept= Console.ReadLine();
+            esal = Convert.ToDouble(Console.ReadLine());
+        }
+
+        public void printempdet()
+        {
+            Console.WriteLine("id={0},ename={1},dept={2},Esal={3}",eid,ename,dept,esal);
+          //  Console.WriteLine("id="+eid+"ename="+ename+"dept="+dept);
+          //  Console.WriteLine($"EmpId={eid},Empname={ename},EmpDept={dept}");//string interpolation
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee e1 = new Employee();// e1[     ]
+            e1.getempdet(); //e1[ 1,"john","Testing"   ]
+            e1.printempdet(); //e1[1,"john","Testing"  ]
+            
+            Employee e2 = new Employee();// e2[]
+            e2.getempdet();
+            e2.printempdet();
+
+            double total_sal = e1.esal + e2.esal;
+            Console.WriteLine("Total Salary=" + total_sal);
+        }
+    }
+}
+
+WAP to store account Details in class.
+1.accno,acchname,DepAmt
+2.input 3 account details.
+3.find the total dep_amount.
+
+"this" pointer
+->It is used to eliminate the ambiguity between the member name and parameter name
+
+namespace ConsoleApp1
+{
+    class Employee
+    {
+        int eid;
+        string ename;
+        string dept;
+        public double esal;
+
+        public void getempdet(int eid,string ename,string dept,double esal)
+        {
+            this.eid = eid; //ambiguity/conflict
+            this.ename = ename;
+            this.dept = dept;
+            this.esal = esal;
+        }
+
+        public void printempdet()
+        {
+            Console.WriteLine("id={0},ename={1},dept={2},Esal={3}",this.eid,this.ename,this.dept,esal);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Employee e1 = new Employee();
+            e1.getempdet(10,"AJAY","PHY",35000); 
+            e1.printempdet(); 
+            
+            Employee e2 = new Employee();
+            e2.getempdet(11, "JAY", "CHEM", 35000);
+            e2.printempdet();
+
+            double total_sal = e1.esal + e2.esal;
+            Console.WriteLine("Total Salary=" + total_sal);
+        }
+    }
+}
+
+
+
+namespace ConsoleApp1
+{
+    class Sample
+    {
+        int no1, no2;
+
+        public void getnumbers(int no1,int no2)
+        {
+            this.no1 = no1; 
+            this.no2 = no2;
+        }
+
+        public int addnumbers()
+        {
+            return (this.no1+this.no2);
+        }
+
+        public int subnumbers()
+        {
+            return (this.no1 - this.no2);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Sample obj = new Sample();
+            obj.getnumbers(10, 20);
+            int result=obj.addnumbers();
+            Console.WriteLine("sum=" + result);
+
+            Console.WriteLine("Diff=" + obj.subnumbers());
+        }
+    }
+
+

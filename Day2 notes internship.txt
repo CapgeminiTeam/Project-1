@@ -1,0 +1,58 @@
+writline is use for new line
+write is used instead to display in a line format
+foreach is used to fetch the data directly without giving the address
+parse to convert the datatype
+tryparse use to remove the runtime exception occur 
+No need to use parse for string.
+String can read anything even special characters.
+difference between convert and parse are in convert bool will return a number i.e 0,1
+String is immutable(We cannnot modify the string.
+In String if we use compare method it will shows 3 results :a) 0 =if the string if equals, b) 1= if the string 1 have more length than string 2, c)-1 = if string 2 have more length than string 1.
+enumumerator to read the characters.  
+== it is operator and return bool value use to compare the refer the memory location.
+Equal it is method and retuen bool vlaue and used to 
+enum = enumarated pre defined data type.used to extract the value.set of name interger constant.
+getvalue or default is only for nullable method.
+
+Value= uses stack memory,holds the data within its own memory(new keyword is not used here)
+reference type= uses heap memory,contians pointer to the memory location that holds the data. Eg:-string(But they have like value type),object
+
+"this" pointer is used to eliminate the ambiguity between name and parameter name.
+Destructor to deallocate the memory space.memory delocation cannot be seen in output.
+constructor are ussed to allocate memory space. there are 3 types of constructor that are default, parameterized,copy.
+
+Inheritance:
+Derived the code from old class to new class.
+Code 
+
+
+protected, private and public = difference
+
+void = no need of return.
+other than void we have to compute it by "return" key word.
+
+FOR non-static method object is needed.n number of object.
+for static method refering the class name without object.it can call only ones.
+Static class cannot be instantiated.
+statuc class
+
+
+POLYMORPHISM:- Compile time/early binding/static polymorphism/function overloading.
+properties shoo=uld be always public.
+"autogenetrated prop method: type prop + space +tab(2times)"
+
+method hiding = 1)same method can be used by using new keyword.
+                2)used to hide the method.
+
+
+things to do:=
+1. struct keyword
+2. enum
+3.boxing and unboxing
+
+.dll=dynamic link library
+.exe=executable file
+
+
+
+
